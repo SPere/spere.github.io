@@ -65,19 +65,18 @@ window.onload = () => {
                     const longitude = place.geocodes.main.longitude;
 
                     // add place name
-                    const placeText = document.createElement('a-image');
+                    const placeImage = document.createElement('a-image');
 					var latlong = `latitude: ${latitude}; longitude: ${longitude};`;
-					console.log(place.name, latlong);
-                    placeText.setAttribute('gps-entity-place', latlong);
-					placeText.setAttribute('look-at', '[gps-camera]');
-					placeText.setAttribute('position', '0 0 -50');
-                    placeText.setAttribute('name', place.name);
-                    placeText.setAttribute('src', 'https://spere.github.io/assets/map-marker.png');
+                    placeImage.setAttribute('gps-entity-place', latlong);
+					placeImage.setAttribute('look-at', '[gps-camera]');
+					placeImage.setAttribute('position', '0 0 -30');
+                    placeImage.setAttribute('name', place.name);
+                    placeImage.setAttribute('src', 'https://spere.github.io/assets/map-marker.png');
 					
 					// for debug purposes, just show in a bigger scale, otherwise I have to personally go on places...
-					placeText.setAttribute('scale', '20, 20');
+					placeImage.setAttribute('scale', '20, 20');
                     
-                    placeText.addEventListener('loaded', () => {
+                    placeImage.addEventListener('loaded', () => {
                         window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
                     });
 			
@@ -100,16 +99,25 @@ window.onload = () => {
 
 							setTimeout(() => {
 								container.parentElement.removeChild(container);
-							}, 1500);
+							}, 3000);
 						}
 					};
 
-					placeText.addEventListener('click', clickListener);
+					placeImage.addEventListener('click', clickListener);
+
+					const placeText = document.createElement('a-text');
+					placeText.setAttribute('gps-entity-place', latlong);
+					placeText.setAttribute('look-at', '[gps-camera]');
+					placeText.setAttribute('position', '0 -10 -30');
+                    placeText.setAttribute('value', place.name);
+					placeText.setAttribute('scale', '10, 10, 10');
 					
 					const entity = document.createElement('a-entity');
+					entity.appendChild(placeImage);
 					entity.appendChild(placeText);
 
                     scene.appendChild(entity);
+					
                 });
             });
     //},
@@ -123,6 +131,18 @@ window.onload = () => {
 };
 
 	</script>
+	<style>
+	#place-label{
+		background-color: white;
+		color:black;
+		z-index: 99999;
+		position: absolute;
+		top: 0;
+		left:0;
+		margin: auto;
+		padding: 10px;
+	}
+	</style>
 </head>
 
 <body style='margin: 0; overflow: hidden;'>
