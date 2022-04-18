@@ -16,8 +16,8 @@ function loadPlaces(position) {
 			name: 'Petrol',
 			geocodes:{
 				main: {
-					latitude: 51.4215283,
-					longitude: -0.4506747
+					latitude: 51.4228736,
+					longitude: -0.4486356
 				}
 			}
 			
@@ -69,7 +69,7 @@ window.onload = () => {
 					var latlong = `latitude: ${latitude}; longitude: ${longitude};`;
                     placeImage.setAttribute('gps-entity-place', latlong);
 					placeImage.setAttribute('look-at', '[gps-camera]');
-					placeImage.setAttribute('position', '0, 30, 0');
+					placeImage.setAttribute('position', '0, 50, 0');
                     placeImage.setAttribute('name', place.name);
                     placeImage.setAttribute('src', 'https://spere.github.io/assets/map-marker.png');
 					
@@ -108,7 +108,7 @@ window.onload = () => {
 					const placeText = document.createElement('a-text');
 					placeText.setAttribute('gps-entity-place', latlong);
 					placeText.setAttribute('look-at', '[gps-camera]');
-					placeText.setAttribute('position', '0, 25, 0');
+					placeText.setAttribute('position', '0, 40, 0');
                     placeText.setAttribute('value', place.name);
 					placeText.setAttribute('scale', '10, 10, 10');
 					
