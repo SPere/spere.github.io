@@ -1,0 +1,87 @@
+<html>
+	<head>
+		<title>Map twist</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+		<style>
+			.circle {
+				background-color: red;
+				border-radius: 50%;
+				position: absolute;
+				font-size: xx-large;
+				overflow:hidden;
+			}
+			.first-circle{
+				top: 377px;
+				left: 403px;
+			}
+			.second-circle{
+				top: 547px;
+				left: 403px;
+			}
+			.third-circle{
+				top: 277px;
+				left: 769px;
+			}
+			.map{
+				position:relative;
+				width:1024px;
+				scroll:auto;
+			}
+		</style>
+	</head>
+	<body>
+		<img class="map" src="./assets/istockphoto-462586085-1024x1024.jpg">
+			<i class="fa-regular fa-circle-xmark circle first-circle" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo"></i>
+			<i class="fa-regular fa-circle-xmark circle second-circle" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat"></i>
+			<i class="fa-regular fa-circle-xmark circle third-circle" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap"></i>
+		</img>
+		
+		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<h1 class="modal-title fs-5" id="exampleModalLabel">Location:</h1>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			  </div>
+			  <div class="modal-body">
+				<form>
+				  <div class="mb-3">
+					<label for="recipient-name" class="col-form-label">Recipient:</label>
+					<input type="text" class="form-control" id="recipient-name">
+				  </div>
+				  <div class="mb-3">
+					<label for="message-text" class="col-form-label">Message:</label>
+					<textarea class="form-control" id="message-text"></textarea>
+				  </div>
+				</form>
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary">Send message</button>
+			  </div>
+			</div>
+		  </div>
+		</div>
+		
+		<script>
+			const exampleModal = document.getElementById('exampleModal')
+			exampleModal.addEventListener('show.bs.modal', event => {
+			  // Button that triggered the modal
+			  const button = event.relatedTarget
+			  // Extract info from data-bs-* attributes
+			  const recipient = button.getAttribute('data-bs-whatever')
+			  // If necessary, you could initiate an AJAX request here
+			  // and then do the updating in a callback.
+			  //
+			  // Update the modal's content.
+			  const modalTitle = exampleModal.querySelector('.modal-title')
+			  const modalBodyInput = exampleModal.querySelector('.modal-body input')
+
+			  modalTitle.textContent = `New message to ${recipient}`
+			  modalBodyInput.value = recipient
+			})
+		</script>
+	</body>
+</html>
